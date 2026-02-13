@@ -46,7 +46,9 @@ python calculator.py
 
 ## 截图
 
-![计算器界面](screenshot.png)
+![计算器界面](https://via.placeholder.com/300x400/333/fff?text=Calculator+UI)
+
+> 💡 **提示**: 运行程序后，你可以截图替换上面的图片。将截图保存为 `screenshot.png` 上传到仓库即可。
 
 ## 技术栈
 
