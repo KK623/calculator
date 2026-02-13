@@ -5,6 +5,9 @@ on:
     branches: [ main ]
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build-windows:
     runs-on: windows-latest
@@ -25,19 +28,23 @@ jobs:
         
     - name: Build executable
       run: |
-        pyinstaller --onefile --windowed --name Calculator calculator.py
+        pyinstaller --onefile --windowed --name Calculator --clean calculator.py
       
+    - name: List dist directory
+      run: |
+        dir dist/
+        
     - name: Upload artifact
       uses: actions/upload-artifact@v4
       with:
         name: Calculator-Windows
-        path: dist/Calculator.exe
+        path: dist/*.exe
         
     - name: Create Release
       if: github.event_name == 'push' && contains(github.event.head_commit.message, 'release')
       uses: softprops/action-gh-release@v1
       with:
-        files: dist/Calculator.exe
+        files: dist/*.exe
         tag_name: v${{ github.run_number }}
         name: Calculator v${{ github.run_number }}
         draft: false

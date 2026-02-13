@@ -55,7 +55,7 @@ python calculator.py
 
 ## 作者
 
-凯总
+K
 
 ## 许可证
 
